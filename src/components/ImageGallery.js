@@ -1,0 +1,1 @@
+<ul className="ImageGallery"></ul>;
