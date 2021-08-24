@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 // import { v4 as uuidv4 } from "uuid";
+import { theme } from "./StyledCommon";
 import Container from "./components/Container";
+import Searchbar from "./components/Searchbar";
 import Section from "./components/Section";
-import StyledCommon, { theme } from "./StyledCommon";
+import ImageGallery from "./components/ImageGallery/ImageGallery";
+import Button from "./components/Button";
 
 class App extends Component {
   state = {};
@@ -11,11 +14,15 @@ class App extends Component {
 
   render() {
     return (
-      <Section theme={theme}>
-        <Container>
-          <h1>Hello everyone</h1>
-        </Container>
-      </Section>
+      <>
+        <Searchbar />
+        <Section theme={theme}>
+          <Container>
+            <ImageGallery />
+            <Button label="Load more" />
+          </Container>
+        </Section>
+      </>
     );
   }
 }

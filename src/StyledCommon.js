@@ -1,11 +1,12 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const theme = {
   colors: {
-    primaryBg: "teal",
+    primaryBg: "#ffffff",
     secondaryBg: "#cccccc",
-    primaryText: "#000000",
+    primaryDarkText: "#000000",
     secondaryText: "#cccccc",
+    primaryLightText: "#ffffff",
   },
   fontWeight: {
     medium: "500",
@@ -20,39 +21,33 @@ export const theme = {
 
 export const StyledCommon = createGlobalStyle`
 
+html {
+  box-sizing: border-box;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  color: #212121;
+  background-color: #fff;
+  line-height: 1.333;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  // background-color: grey;
-}
-
-.list {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-left: 0;
-  list-style: none;
-}
-
-.link {
-  cursor: pointer;
-  text-decoration: none;
-  font-style: normal;
-  color: inherit;
 }
 
 img {
   display: block;
   width: 100%;
   height: auto;
-}
-
-.img-wrap {
-  position: relative;
-  overflow: hidden;
 }
 
 h1,
@@ -64,14 +59,41 @@ h6,
 p {
   margin-top: 0;
 }
+`;
 
-.button {
+/* .img-wrap {
+  position: relative;
+  overflow: hidden;
+} */
+
+// .visuallyHidden {
+//   position: absolute;
+//   width: 1px;
+//   height: 1px;
+//   margin: -1px;
+//   padding: 0;
+//   overflow: hidden;
+//   border: 0;
+//   clip: rect(0 0 0 0);
+// }
+
+export const StyledBasicList = styled.ul`
+  margin-top: 0;
+  padding-left: 0;
+  list-style: none;
+`;
+
+export const StyledBasicButton = styled.button`
   cursor: pointer;
   outline: none;
   border: none;
-}
+  font-family: inherit;
+  line-height: inherit;
+`;
 
-#root {
-}
-
+export const StyledBasicLink = styled.a`
+  cursor: pointer;
+  text-decoration: none;
+  font-style: normal;
+  color: inherit;
 `;

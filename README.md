@@ -6,7 +6,7 @@
 
 Создай компоненты `<Searchbar>`, `<ImageGallery>`, `<ImageGalleryItem>`,
 `<Loader>`, `<Button>` и `<Modal>`. Готовые стили компонентов можно взять в
-файле [styles.css](./styles.css) и подправить под себя, если необходимо.
+файле ./styles.css и подправить под себя, если необходимо.
 
 ## Инструкция Pixabay API
 
