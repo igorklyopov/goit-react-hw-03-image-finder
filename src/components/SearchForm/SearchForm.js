@@ -18,8 +18,9 @@ class SearchForm extends Component {
     if (this.state.searchQuery.trim() !== "") {
       this.props.getFormData(this.state.searchQuery);
       this.setState({ searchQuery: "" });
+    } else {
+      console.log("Enter search query!");
     }
-    console.log("Enter search query!");
   };
 
   render() {
