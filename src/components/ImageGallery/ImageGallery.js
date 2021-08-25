@@ -1,10 +1,12 @@
 import StyledImageGallery from "./StyledImageGallery";
 import ImageGalleryItem from "../ImageGalleryItem/ImageGalleryItem";
 
-const ImageGallery = () => {
+const ImageGallery = ({ images }) => {
   return (
     <StyledImageGallery>
-      <ImageGalleryItem />
+      {images.map((image) => (
+        <ImageGalleryItem key={image.id} imagesData={image} />
+      ))}
     </StyledImageGallery>
   );
 };

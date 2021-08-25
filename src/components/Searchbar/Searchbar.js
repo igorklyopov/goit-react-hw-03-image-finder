@@ -1,12 +1,7 @@
 import { StyledSearchbar } from "./StyledSearchbar";
-import SearchForm from "../SearchForm";
 
-const Searchbar = () => {
-  return (
-    <StyledSearchbar>
-      <SearchForm />
-    </StyledSearchbar>
-  );
+const Searchbar = ({ children }) => {
+  return <StyledSearchbar>{children}</StyledSearchbar>;
 };
 
 export default Searchbar;
