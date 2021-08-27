@@ -1,15 +1,15 @@
 import { StyledButton, StyledSearchFormButtonLabel } from "./StyledButton";
 
-const Button = ({ label }) => {
+const Button = ({ label, onLoadMoreBtnClick }) => {
   return (
-    <StyledButton>
+    <StyledButton onClick={onLoadMoreBtnClick}>
       <StyledSearchFormButtonLabel />
       {label}
       <StyledSearchFormButtonLabel />
     </StyledButton>
   );
 };
-
+// onClick={this.props.onLoadMoreBtnClick}
 export default Button;
 
 window.scrollTo({

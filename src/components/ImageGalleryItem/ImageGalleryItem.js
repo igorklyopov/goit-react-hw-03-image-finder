@@ -3,12 +3,13 @@ import {
   StyledImageGalleryItemImage,
 } from "./StyledImageGalleryItem";
 
-const ImageGalleryItem = ({ imagesData }) => {
+const ImageGalleryItem = ({ imagesData, onClick }) => {
   return (
     <StyledImageGalleryItem>
       <StyledImageGalleryItemImage
         src={imagesData.webformatURL}
         alt={imagesData.tags}
+        onClick={onClick}
       />
     </StyledImageGalleryItem>
   );

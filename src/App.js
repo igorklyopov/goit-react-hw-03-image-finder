@@ -10,7 +10,7 @@ import Button from "./components/Button";
 import fetchImages from "./services/fetchImages";
 
 // const moreImagesPerPage = >IMAGES_PER_PAGE;
-const moreImagesPerPage = false;
+const moreImagesPerPage = true;
 const Status = {
   IDLE: "idle",
   PENDING: "pending",
@@ -21,6 +21,7 @@ const Status = {
 class App extends Component {
   state = {
     searchQuery: "",
+    pageNumber: 1,
     images: [],
     status: Status.IDLE,
     error: null,
@@ -36,13 +37,17 @@ class App extends Component {
     if (prevState.searchQuery !== this.state.searchQuery) {
       this.setState({ status: Status.PENDING });
 
-      fetchImages(this.state.searchQuery)
+      fetchImages(this.state.searchQuery, this.state.pageNumber)
         .then((images) =>
           this.setState({ images: images.hits, status: Status.RESOLVED })
         )
         .catch((error) => this.setState({ error, status: Status.REJECTED }));
     }
   }
+
+  onLoadMoreBtnClick = () => {
+    console.log("onLoadMoreBtnClick");
+  };
 
   render() {
     const { images, status, error } = this.state;
@@ -67,7 +72,12 @@ class App extends Component {
             {status === "resolved" && (
               <>
                 <ImageGallery images={images} />
-                {moreImagesPerPage && <Button label="Load more" />}
+                {moreImagesPerPage && (
+                  <Button
+                    label="Load more"
+                    onLoadMoreBtnClick={this.onLoadMoreBtnClick}
+                  />
+                )}
               </>
             )}
           </Container>

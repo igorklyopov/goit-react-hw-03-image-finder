@@ -19,7 +19,7 @@ class SearchForm extends Component {
       this.props.getFormData(this.state.searchQuery);
       this.setState({ searchQuery: "" });
     } else {
-      console.log("Enter search query!");
+      console.log("Please enter your request!");
     }
   };
 
