@@ -11,8 +11,3 @@ const Button = ({ label, onLoadMoreBtnClick }) => {
 };
 
 export default Button;
-
-window.scrollTo({
-  top: document.documentElement.scrollHeight,
-  behavior: "smooth",
-});

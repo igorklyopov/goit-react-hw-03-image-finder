@@ -8,6 +8,7 @@ import ImageGallery from "./components/ImageGallery";
 import Button from "./components/Button";
 import { IMAGES_PER_PAGE, fetchImages } from "./services/fetchImages";
 import showGalleryLoader from "./utils/showGalleryLoader";
+import scrollDown from "./utils/scrollDown";
 
 const Status = {
   IDLE: "idle",
@@ -54,6 +55,10 @@ class App extends Component {
         if (images.total > IMAGES_PER_PAGE) {
           this.setState({ moreImagesPerPage: true });
         }
+
+        if (pageNumber > 1) {
+          scrollDown();
+        }
       })
       .catch((error) =>
         this.setState({ error: error.message, status: Status.REJECTED })
@@ -88,9 +93,6 @@ class App extends Component {
       <>
         <Searchbar>
           <SearchForm getFormData={this.onSearchFormSubmit} />
-          {/* <IconButton>
-            <IconSearch />
-          </IconButton> */}
         </Searchbar>
         <Section theme={theme}>
           <Container>
