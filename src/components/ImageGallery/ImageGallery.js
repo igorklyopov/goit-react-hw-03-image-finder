@@ -17,7 +17,7 @@ class ImageGallery extends Component {
 
   setActiveImageIndex = (index) => {
     this.setState({ activeImageIndex: index });
-    console.log(this.state.activeImageIndex);
+    // console.log(this.state.activeImageIndex);
   };
 
   showLightBox = (index) => {
@@ -27,7 +27,7 @@ class ImageGallery extends Component {
 
   render() {
     // console.log(this.props.images[0].largeImageURL);
-    console.log(this.props.images[this.state.activeImageIndex].largeImageURL);
+    // console.log(this.props.images[this.state.activeImageIndex].largeImageURL);
     return (
       <>
         <StyledImageGallery>

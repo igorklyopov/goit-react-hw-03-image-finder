@@ -29,24 +29,36 @@ class App extends Component {
 
   static propTypes = {};
 
-  onSearchFormSubmit = (searchQuery) => {
-    this.setState({ searchQuery });
-  };
-
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.searchQuery !== this.state.searchQuery) {
-      this.setState({ status: Status.PENDING });
+    const { searchQuery, pageNumber } = this.state;
 
-      fetchImages(this.state.searchQuery, this.state.pageNumber)
-        .then((images) =>
-          this.setState({ images: images.hits, status: Status.RESOLVED })
-        )
-        .catch((error) => this.setState({ error, status: Status.REJECTED }));
+    if (prevState.searchQuery !== this.state.searchQuery) {
+      this.setState({ status: Status.PENDING, pageNumber: 1 });
+
+      this.getImages(searchQuery, pageNumber);
     }
   }
 
+  getImages = (searchQuery, pageNumber) => {
+    fetchImages(searchQuery, pageNumber)
+      .then((images) =>
+        this.setState({ images: images.hits, status: Status.RESOLVED })
+      )
+      .catch((error) => this.setState({ error, status: Status.REJECTED }));
+  };
+
+  onSearchFormSubmit = (searchQuery) => {
+    this.setState({ searchQuery, pageNumber: 1 });
+  };
+
   onLoadMoreBtnClick = () => {
-    console.log("onLoadMoreBtnClick");
+    const { searchQuery, pageNumber } = this.state;
+
+    this.setState({
+      status: Status.PENDING,
+      pageNumber: pageNumber + 1,
+    });
+    this.getImages(searchQuery, pageNumber + 1);
   };
 
   render() {
