@@ -1,5 +1,7 @@
 import { Component } from "react";
 import { StyledSearchForm, StyledSearchFormInput } from "./StyledSearchForm";
+import IconButton from "../IconButton/IconButton";
+import { ReactComponent as IconSearch } from "../../images/search.svg";
 
 class SearchForm extends Component {
   state = {
@@ -30,9 +32,9 @@ class SearchForm extends Component {
           value={this.state.searchQuery}
           onChange={this.onInputChange}
         />
-        <button type="submit" aria-label="search">
-          search
-        </button>
+        <IconButton type="submit" ariaLabel="search">
+          <IconSearch />
+        </IconButton>
       </StyledSearchForm>
     );
   }

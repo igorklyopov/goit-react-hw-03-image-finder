@@ -18,6 +18,7 @@ export const StyledSearchFormInput = styled.input`
   font: inherit;
   font-size: 20px;
   border: none;
+  border-radius: 5px;
   outline: none;
   padding-left: 10px;
   padding-right: 5px;

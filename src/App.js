@@ -9,8 +9,6 @@ import Button from "./components/Button";
 import { IMAGES_PER_PAGE, fetchImages } from "./services/fetchImages";
 import showGalleryLoader from "./utils/showGalleryLoader";
 
-// const moreImagesPerPage = >IMAGES_PER_PAGE;
-// const moreImagesPerPage = true;
 const Status = {
   IDLE: "idle",
   PENDING: "pending",
@@ -90,6 +88,9 @@ class App extends Component {
       <>
         <Searchbar>
           <SearchForm getFormData={this.onSearchFormSubmit} />
+          {/* <IconButton>
+            <IconSearch />
+          </IconButton> */}
         </Searchbar>
         <Section theme={theme}>
           <Container>
