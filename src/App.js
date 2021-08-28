@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import Loader from "react-loader-spinner";
 import { theme } from "./StyledCommon";
 import Container from "./components/Container";
 import Searchbar from "./components/Searchbar";
 import SearchForm from "./components/SearchForm";
 import Section from "./components/Section";
-import ImageGallery from "./components/ImageGallery/ImageGallery";
+import ImageGallery from "./components/ImageGallery";
 import Button from "./components/Button";
-import fetchImages from "./services/fetchImages";
+import { IMAGES_PER_PAGE, fetchImages } from "./services/fetchImages";
+import showGalleryLoader from "./utils/showGalleryLoader";
 
 // const moreImagesPerPage = >IMAGES_PER_PAGE;
-const moreImagesPerPage = true;
+// const moreImagesPerPage = true;
 const Status = {
   IDLE: "idle",
   PENDING: "pending",
@@ -23,6 +23,7 @@ class App extends Component {
     searchQuery: "",
     pageNumber: 1,
     images: [],
+    moreImagesPerPage: false,
     status: Status.IDLE,
     error: null,
   };
@@ -41,14 +42,35 @@ class App extends Component {
 
   getImages = (searchQuery, pageNumber) => {
     fetchImages(searchQuery, pageNumber)
-      .then((images) =>
-        this.setState({ images: images.hits, status: Status.RESOLVED })
-      )
-      .catch((error) => this.setState({ error, status: Status.REJECTED }));
+      .then((images) => {
+        this.setState({ images: images.hits, status: Status.RESOLVED });
+
+        if (images.total === 0) {
+          this.setState({
+            status: Status.REJECTED,
+            error: "No images for this request!",
+          });
+          return;
+        }
+
+        if (images.total > IMAGES_PER_PAGE) {
+          this.setState({ moreImagesPerPage: true });
+        }
+      })
+      .catch((error) =>
+        this.setState({ error: error.message, status: Status.REJECTED })
+      );
   };
 
   onSearchFormSubmit = (searchQuery) => {
     this.setState({ searchQuery, pageNumber: 1 });
+
+    if (searchQuery === "") {
+      this.setState({
+        status: Status.REJECTED,
+        error: "Please enter your request!",
+      });
+    }
   };
 
   onLoadMoreBtnClick = () => {
@@ -62,7 +84,7 @@ class App extends Component {
   };
 
   render() {
-    const { images, status, error } = this.state;
+    const { images, moreImagesPerPage, status, error } = this.state;
 
     return (
       <>
@@ -71,16 +93,8 @@ class App extends Component {
         </Searchbar>
         <Section theme={theme}>
           <Container>
-            {status === "pending" && (
-              <Loader
-                type="Rings"
-                color="#00BFFF"
-                height={80}
-                width={80}
-                timeout={0}
-              />
-            )}
-            {status === "rejected" && <h1>{error.message}</h1>}
+            {status === "pending" && showGalleryLoader()}
+            {status === "rejected" && <p>{error}</p>}
             {status === "resolved" && (
               <>
                 <ImageGallery images={images} />
