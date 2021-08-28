@@ -27,8 +27,6 @@ class App extends Component {
     error: null,
   };
 
-  static propTypes = {};
-
   componentDidUpdate(prevProps, prevState) {
     const { searchQuery, pageNumber } = this.state;
 

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { StyledIconButton } from "./StyledIconButton";
 
 const IconButton = ({ children, type, ariaLabel, onClick }) => {
@@ -8,4 +9,9 @@ const IconButton = ({ children, type, ariaLabel, onClick }) => {
   );
 };
 
+IconButton.propTypes = {
+  ariaLabel: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  type: PropTypes.string.isRequired,
+};
 export default IconButton;

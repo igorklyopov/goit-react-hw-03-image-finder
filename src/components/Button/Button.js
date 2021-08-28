@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { StyledButton, StyledSearchFormButtonLabel } from "./StyledButton";
 
 const Button = ({ label, onLoadMoreBtnClick }) => {
@@ -8,6 +9,11 @@ const Button = ({ label, onLoadMoreBtnClick }) => {
       <StyledSearchFormButtonLabel />
     </StyledButton>
   );
+};
+
+Button.propTypes = {
+  label: PropTypes.string.isRequired,
+  onLoadMoreBtnClick: PropTypes.func.isRequired,
 };
 
 export default Button;

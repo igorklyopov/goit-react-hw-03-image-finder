@@ -1,4 +1,5 @@
 import { Component } from "react";
+import PropTypes from "prop-types";
 import { StyledSearchForm, StyledSearchFormInput } from "./StyledSearchForm";
 import IconButton from "../IconButton/IconButton";
 import { ReactComponent as IconSearch } from "../../images/search.svg";
@@ -8,7 +9,9 @@ class SearchForm extends Component {
     searchQuery: "",
   };
 
-  static propTypes = {};
+  static propTypes = {
+    getFormData: PropTypes.func.isRequired,
+  };
 
   onInputChange = (e) => {
     this.setState({ searchQuery: e.target.value.toLowerCase() });

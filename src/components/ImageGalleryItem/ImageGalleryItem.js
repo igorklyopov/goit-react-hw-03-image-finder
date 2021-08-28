@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import {
   StyledImageGalleryItem,
   StyledImageGalleryItemImage,
@@ -13,6 +14,11 @@ const ImageGalleryItem = ({ imagesData, onClick }) => {
       />
     </StyledImageGalleryItem>
   );
+};
+
+ImageGalleryItem.propTypes = {
+  imagesData: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default ImageGalleryItem;

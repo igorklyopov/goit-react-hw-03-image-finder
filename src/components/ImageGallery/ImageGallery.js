@@ -1,4 +1,5 @@
 import { Component } from "react";
+import PropTypes from "prop-types";
 import StyledImageGallery from "./StyledImageGallery";
 import ImageGalleryItem from "../ImageGalleryItem/ImageGalleryItem";
 import Modal from "../Modal/Modal";
@@ -7,6 +8,16 @@ class ImageGallery extends Component {
   state = {
     showModal: false,
     activeImageIndex: 0,
+  };
+
+  static propTypes = {
+    contacts: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        webformatURL: PropTypes.string.isRequired,
+        largeImageURL: PropTypes.string.isRequired,
+      })
+    ),
   };
 
   toggleModal = () => {
