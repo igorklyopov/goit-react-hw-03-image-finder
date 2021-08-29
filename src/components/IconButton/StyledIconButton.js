@@ -7,7 +7,8 @@ export const StyledIconButton = styled(StyledBasicButton)`
   align-items: center;
   height: 30px;
   padding: 5px 10px 5px 10px;
-  color: grey;
+  background-color: ${() => theme.colors.lightBg};
+  color: ${() => theme.colors.secondaryDarkText};
 
   & > svg {
     width: 20px;
@@ -16,7 +17,7 @@ export const StyledIconButton = styled(StyledBasicButton)`
 
   &:hover,
   &:focus {
-    color: #ffffff;
-    background-color: grey;
+    color: ${() => theme.colors.primaryLightText};
+    background-color: ${() => theme.colors.secondaryBg};
   }
 `;

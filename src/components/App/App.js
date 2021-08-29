@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-import { theme } from "./StyledCommon";
-import Container from "./components/Container";
-import Searchbar from "./components/Searchbar";
-import SearchForm from "./components/SearchForm";
-import Section from "./components/Section";
-import ImageGallery from "./components/ImageGallery";
-import Button from "./components/Button";
-import { IMAGES_PER_PAGE, fetchImages } from "./services/fetchImages";
-import showGalleryLoader from "./utils/showGalleryLoader";
-import scrollDown from "./utils/scrollDown";
+import { theme } from "../../StyledCommon";
+import StyledApp from "./StyledApp";
+import Container from "../Container";
+import Searchbar from "../Searchbar";
+import SearchForm from "../SearchForm";
+import Section from "../Section";
+import ImageGallery from "../ImageGallery";
+import Button from "../Button";
+import { IMAGES_PER_PAGE, fetchImages } from "../../services/fetchImages";
+import showGalleryLoader from "../../utils/showGalleryLoader";
+import scrollDown from "../../utils/scrollDown";
 
 const Status = {
   IDLE: "idle",
@@ -88,7 +89,7 @@ class App extends Component {
     const { images, moreImagesPerPage, status, error } = this.state;
 
     return (
-      <>
+      <StyledApp>
         <Searchbar>
           <SearchForm getFormData={this.onSearchFormSubmit} />
         </Searchbar>
@@ -109,7 +110,7 @@ class App extends Component {
             )}
           </Container>
         </Section>
-      </>
+      </StyledApp>
     );
   }
 }

@@ -2,11 +2,14 @@ import styled, { createGlobalStyle } from "styled-components";
 
 export const theme = {
   colors: {
-    primaryBg: "#ffffff",
-    secondaryBg: "#cccccc",
-    primaryDarkText: "#000000",
-    secondaryText: "#cccccc",
-    primaryLightText: "#ffffff",
+    primaryBg: "#fdfc47",
+    secondaryBg: "#33ff33",
+    lightBg: "#ccff99",
+    primaryDarkText: "#009900",
+    secondaryDarkText: "#66ff33",
+    primaryLightText: "#ffff00",
+    secondaryLightText: "#ffffff",
+    primaryBgGradient: "linear-gradient(to right,#24fe41, #fdfc47)",
   },
   fontWeight: {
     medium: "500",
@@ -38,7 +41,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   color: #212121;
-  background-color: #fff;
+  background-color: #fffffe;
   line-height: 1.333;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -60,22 +63,6 @@ p {
   margin-top: 0;
 }
 `;
-
-/* .img-wrap {
-  position: relative;
-  overflow: hidden;
-} */
-
-// .visuallyHidden {
-//   position: absolute;
-//   width: 1px;
-//   height: 1px;
-//   margin: -1px;
-//   padding: 0;
-//   overflow: hidden;
-//   border: 0;
-//   clip: rect(0 0 0 0);
-// }
 
 export const StyledBasicList = styled.ul`
   margin-top: 0;

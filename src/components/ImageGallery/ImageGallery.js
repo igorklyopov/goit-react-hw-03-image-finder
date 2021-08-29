@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import StyledImageGallery from "./StyledImageGallery";
 import ImageGalleryItem from "../ImageGalleryItem/ImageGalleryItem";
 import Modal from "../Modal/Modal";
+import StyledImageModal from "../Modal/StyledImageModal";
 
 class ImageGallery extends Component {
   state = {
@@ -49,7 +50,7 @@ class ImageGallery extends Component {
         </StyledImageGallery>
         {this.state.showModal && (
           <Modal onModalClose={this.toggleModal}>
-            <img
+            <StyledImageModal
               src={this.props.images[this.state.activeImageIndex].largeImageURL}
               alt={this.props.images[this.state.activeImageIndex].tags}
             />

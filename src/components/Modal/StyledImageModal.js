@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 const StyledImageModal = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 5px;
 `;
 
 export default StyledImageModal;
