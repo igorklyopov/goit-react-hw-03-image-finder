@@ -27,7 +27,6 @@ class Modal extends Component {
   };
 
   render() {
-    console.log(this.props.children);
     return createPortal(
       <StyledOverlay onClick={this.onBackdropClick}>
         <StyledModal>{this.props.children}</StyledModal>
