@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme, StyledBasicList } from "../../StyledCommon";
+import { StyledBasicList } from "../../StyledCommon";
 
 const StyledImageGallery = styled(StyledBasicList)`
   display: grid;

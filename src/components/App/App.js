@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { theme } from "../../StyledCommon";
+import { theme, StyledErrorMessage } from "../../StyledCommon";
 import StyledApp from "./StyledApp";
 import Container from "../Container";
 import Searchbar from "../Searchbar";
@@ -96,7 +96,9 @@ class App extends Component {
         <Section theme={theme}>
           <Container>
             {status === "pending" && showGalleryLoader()}
-            {status === "rejected" && <p>{error}</p>}
+            {status === "rejected" && (
+              <StyledErrorMessage>{error}</StyledErrorMessage>
+            )}
             {status === "resolved" && (
               <>
                 <ImageGallery images={images} />

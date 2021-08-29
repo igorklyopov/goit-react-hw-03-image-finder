@@ -84,3 +84,9 @@ export const StyledBasicLink = styled.a`
   font-style: normal;
   color: inherit;
 `;
+
+export const StyledErrorMessage = styled.p`
+  font-size: 24px;
+  color: ${() => theme.colors.secondaryDarkText};
+  font-weight: ${() => theme.fontWeight.bold};
+`;
