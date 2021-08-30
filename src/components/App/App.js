@@ -31,7 +31,10 @@ class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { searchQuery, pageNumber } = this.state;
 
-    if (prevState.searchQuery !== this.state.searchQuery) {
+    if (
+      prevState.searchQuery !== this.state.searchQuery &&
+      this.state.searchQuery !== ""
+    ) {
       this.setState({ status: Status.PENDING, pageNumber: 1 });
 
       this.getImages(searchQuery, pageNumber);
@@ -51,9 +54,9 @@ class App extends Component {
           return;
         }
 
-        if (images.total > IMAGES_PER_PAGE) {
-          this.setState({ moreImagesPerPage: true });
-        }
+        images.total > IMAGES_PER_PAGE
+          ? this.setState({ moreImagesPerPage: true })
+          : this.setState({ moreImagesPerPage: false });
 
         if (pageNumber > 1) {
           scrollDown();
